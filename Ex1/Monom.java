@@ -296,7 +296,7 @@ public class Monom implements function
 	 * @param m - given monom.
 	 * @return true if given monom equals this monom.
 	 */
-	public boolean equals(Monom m)
+	public boolean equals(Monom m)   // maybe we need to use Object here and instanceof!!
 	{
 		
 		if( ((m.get_coefficient() == this.get_coefficient()) || ((Math.abs(m.get_coefficient() - this.get_coefficient()) < EPSILON))  ) && (m.get_power()==this.get_power()))
@@ -349,6 +349,22 @@ public class Monom implements function
 	
 	private double _coefficient; 
 	private int _power;
+
+	@Override
+	public function initFromString(String s) 
+	{
+		// TODO Auto-generated method stub
+		return new Monom(s);
+	}
+
+
+
+	@Override
+	public function copy()
+	{
+		// TODO Auto-generated method stub
+		return new Monom(this.get_coefficient(),this.get_power());
+	}
 	
 	
 }

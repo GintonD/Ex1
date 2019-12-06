@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import java.util.HashMap;
 
 
-import myMath.Monom;
+import Ex1.Monom;
 
 
 /**
@@ -250,7 +250,8 @@ public class Polynom implements Polynom_able
 	 * 
 	 */
 	@Override
-	public boolean equals(Polynom_able p1) 
+	//public boolean equals(Polynom_able p1) 
+		public boolean equals (Object p1)
 	{
 		
 		//if(p1 instanceof Polynom) - true to this time i dont got answer from the techers if  i need it.
@@ -555,6 +556,16 @@ public class Polynom implements Polynom_able
 	public HashMap<Integer, Monom> getPol() 
 	{
 		return this.pol;
+	}
+
+
+
+
+	@Override
+	public function initFromString(String s)
+	{
+		// TODO Auto-generated method stub
+		return new Polynom(s);
 	}
 	
 }
