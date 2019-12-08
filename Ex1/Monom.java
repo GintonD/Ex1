@@ -296,8 +296,22 @@ public class Monom implements function
 	 * @param m - given monom.
 	 * @return true if given monom equals this monom.
 	 */
-	public boolean equals(Monom m)   // maybe we need to use Object here and instanceof!!
-	{
+	//public boolean equals(Monom m)   // maybe we need to use Object here and instanceof!!
+	public boolean equals(Object obj)
+	{	Monom m;
+		if(obj instanceof Polynom)
+		{
+			Polynom_able p11 =(Polynom_able) obj;
+			Polynom p1= (Polynom) p11;
+			if(p1.getPol().size()==1 || p1.getPol().isEmpty())
+				m=(Monom) p11;
+			else 
+				return false;
+				
+		}
+		
+		else
+		m = (Monom) obj;
 		
 		if( ((m.get_coefficient() == this.get_coefficient()) || ((Math.abs(m.get_coefficient() - this.get_coefficient()) < EPSILON))  ) && (m.get_power()==this.get_power()))
 			return true;

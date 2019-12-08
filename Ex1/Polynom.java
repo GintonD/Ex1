@@ -155,10 +155,12 @@ public class Polynom implements Polynom_able
 		{
 				montemp = new Monom(pol.get(m1.get_power()));
 				montemp.add(m1);
+				if(montemp.isZero())  // if the monom is zero so it delete the entry from the hashmap
+					this.getPol().remove(m1.get_power());
+				else
 				pol.replace(m1.get_power(), montemp);
 
 		}
-		
 		if(this.isZero())
 			this.getPol().clear();
 		
@@ -187,7 +189,9 @@ public class Polynom implements Polynom_able
 			montemp.multipy(new Monom(-1.0,0)); // multiply by minus
 			this.add(montemp);
 			
+			
 		}
+		
 	
 		
 	}
@@ -252,13 +256,37 @@ public class Polynom implements Polynom_able
 	@Override
 	//public boolean equals(Polynom_able p1) 
 		public boolean equals (Object p1)
-	{
+	{  //not fit to complexfunction
+		Polynom pmon= new Polynom(); //polynom object to contain the polable as monom
+		pmon.add(new Monom(0,0));
 		
-		//if(p1 instanceof Polynom) - true to this time i dont got answer from the techers if  i need it.
-		Polynom p11= (Polynom) p1;
-		if(p11.isZero() && this.isZero())
+		if(p1 instanceof Monom)
+		{	
+			if(this.getPol().size()>1) //if the polynomable is monom convert it to monom as polynom object
+				return false;	
+			else
+			{
+				pmon= new Polynom();
+				pmon.add((Monom) p1);	
+			}
+		}
+		
+		
+		if(p1 instanceof Polynom || ( (pmon.isZero())==false ) )
+			
+		{
+			
+			Polynom ppoly;
+			
+			if((pmon.isZero())==false) //if the polable is monom keep convert to poly
+				ppoly=(Polynom)pmon.copy();
+			else //the plable is monom
+				ppoly= (Polynom) p1;	
+					
+		
+		if(ppoly.isZero() && this.isZero())
 			return true;
-		else if(p11.getPol().size() != this.getPol().size())
+		else if(ppoly.getPol().size() != this.getPol().size())
 			return false;
 		else
 		{
@@ -268,12 +296,15 @@ public class Polynom implements Polynom_able
 			{
 				this.entry1=(Map.Entry) iterator1.next();
 				montemp = (Monom) this.entry1.getValue();
-				if(!p11.getPol().get(montemp.get_power()).equals(montemp))
+				if(!ppoly.getPol().get(montemp.get_power()).equals(montemp))
 					return false;
 				
 			}
 		}
 		return true;	
+		}
+		return false; // the function define to recive only polynom object and not monom object
+		//(also if the polynom object is equal logically to certain monom)  
 			
 	}
 	
