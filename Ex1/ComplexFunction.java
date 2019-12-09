@@ -169,12 +169,64 @@ public class ComplexFunction implements complex_function
 	 */
 	private function FromStringRecursion(String s)
 	{
-		int il=s.indexOf('(');
-		String operator=s.substring(0,il);
+		String left;
+		int d=0;
+		String right;
+		int start;
+		int end;
 		
-		//return ComplexFunction(Operation o,function l,function r );
-		return null;
+		start=s.indexOf('(');
+		String operator=s.substring(0,start);
+		Operation o = StringtoOp(operator);
+		
+		
+		end=MiddlePsik(s); //end=s.lastIndexOf(",");
+		
+		//if (s.charAt(end)=='^') d++;
+		left=s.substring(start+1, end+d); //maybe remove the -1
+		
+		
+		right=s.substring(end+1, s.length()-1); //maybe remove the -1
+		
+		
+		return new ComplexFunction(o,initFromString(left),initFromString(right) );
+		
 	}
+
+	/**
+	 * HelperFunction that used to find the correct comma which in the middle between left&right
+	 * @param s
+	 * @return
+	 */
+	private int MiddlePsik(String s) 
+	{
+		Stack <Character> MiddleStack = new Stack <Character>();
+		
+		if (!s.contains("(")) 
+			return s.indexOf(",")+1;
+
+		int start= s.indexOf('(');
+		int psik= s.indexOf(',');
+		if (psik<start)
+			return psik+1;
+		
+		//MiddleStack.push('(');
+		for (int i = start+1; i < s.length()-1; i++)
+		{
+			
+			char letter= s.charAt(i);
+			
+			if (letter=='(')
+				MiddleStack.push(letter);
+			if (letter == ')') 
+				MiddleStack.pop();
+			if (MiddleStack.empty() &&letter == ',')// need to check.
+				return i;//+1
+			
+		}
+		return -1;
+	}
+
 
 
 	/**
