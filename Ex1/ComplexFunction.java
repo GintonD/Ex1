@@ -28,7 +28,7 @@ public class ComplexFunction implements complex_function
      * Constructor from on side function.
      * @param f
      */
-	public ComplexFunction(function f) 
+	public ComplexFunction(function f) //need to fix the none
 	{
 		this.left=f.copy();
 		this.right= new Polynom("0.0");
@@ -49,6 +49,30 @@ public class ComplexFunction implements complex_function
 		this.left=l.copy();
 		this.right=r.copy();
 		this.op=StringtoOp(op);
+	}
+
+
+	/**
+	 * Constructor that got only string
+	 * @param string
+	 */
+	public ComplexFunction(String string) 
+	{
+		ComplexFunction cf =(ComplexFunction) initFromString(string);
+		this.left=cf.left();
+		this.op=cf.getOp();
+		this.right=cf.right();
+	}
+
+
+	/**
+	 * Empty Cinstructor
+	 */
+	public ComplexFunction() //need to fix the none
+	{
+		this.left = new Polynom("0");
+		this.right = new Polynom("0");
+		this.op = Operation.None;
 	}
 
 
@@ -206,7 +230,7 @@ public class ComplexFunction implements complex_function
 			return s.indexOf(",")+1;
 
 		int start= s.indexOf('(');
-		int psik= s.indexOf(',');
+		int psik= s.indexOf(',');//maybe to delete
 		if (psik<start)
 			return psik+1;
 		
