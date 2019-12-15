@@ -12,10 +12,12 @@ We wrote 4 clasess :
 
 Monom,Polynom,ComplexFunction and Functions_GUI.
 
+
 that together represent the A Graph that can show complicated functions. 
 
 The polynom contain by the HashMap data structure.
 the functions in the gui contain by ArrayList data structure.
+
 
 Monom class: 
 
@@ -24,6 +26,7 @@ This class represents a simple "Monom" of shape a*x^b, where a is a real number 
   The class implements function and support simple operations as: construction, value at x, derivative, add and multiply. Etc.. 
 The  monom string should look like this -  >  “  +/- ax^b  “ .  
 (These characters are invalid :”   ) , * ,  ( , “ 
+
  
 Polynom class: 
 
@@ -31,7 +34,8 @@ This class represents a Polynom based on the monom class and contain whole polyn
 The  polyom string should look like this   ->  “+/- a1x^b  +/- a2x^b “  - >  +10+3x^3-4x^4+5x^5 
 (with no backspace between the monoms and all highlights of the monom.) 
  These are some of the function classes can doing: 
-• add - there is two options to add function add Monom/Polynom(using Polynom_able) . • derivative • f(x) • multiply • subtract • root - Finds the point of intersection of the polynomial in the given range • area - Returns the value of the area in the given range • copy • is equal • is zer0
+• add - there is two options to add function add Monom/Polynom(using Polynom_able) . • derivative • f(x) • multiply • subtract • root - Finds the point of intersection of the polynomial in the given range • area - Returns the value of the area in the given range • copy • is equal • is zero
+
 
 ComplexFunction class:
 
