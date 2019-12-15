@@ -5,7 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import Ex1.ComplexFunction;
 import Ex1.Monom;
+import Ex1.Operation;
 import Ex1.Polynom;
 import Ex1.Polynom_able;
 public class PolynomTest {
@@ -335,6 +338,7 @@ System.out.println("******Test 2******* ");
 		Polynom_able p0 = new Polynom();
 		Polynom_able p1 = new Polynom();
 		Polynom_able p2 = new Polynom();
+		Polynom_able p3 = new Polynom("5x^2");
 		Monom m0 = new Monom(1,2);
 		String[][] monoms = {{"1", "x", "x^2", "0.5x^2", "0"}, {"1", "x", "x^2", "0.5x^2"}};
 		for (int i = 0; i < monoms[0].length; i++) {
@@ -351,6 +355,12 @@ System.out.println("******Test 2******* ");
 		assertFalse("Check Monom != Polynom_able", p1.equals(m0));
 		m0 = Monom.ZERO;
 		assertFalse("Check Monom != Polynom_able", p2.equals(m0));
+		Monom m1 = new Monom("5x^2");
+		ComplexFunction cf = new ComplexFunction(Operation.Plus,new Polynom("-3x^2"),new Polynom("8x^2"));
+		assertTrue(p3.equals(m1));
+		assertTrue(p3.equals(cf));
 	}
+	
+
 
 }

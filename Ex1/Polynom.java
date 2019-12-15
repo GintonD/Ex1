@@ -257,7 +257,10 @@ public class Polynom implements Polynom_able
 	@Override
 	//public boolean equals(Polynom_able p1) 
 		public boolean equals (Object p1)
-	{  //not fit to complexfunction
+	{
+		if(p1 instanceof ComplexFunction) //tosefet
+			return p1.equals(this);
+		
 		Polynom pmon= new Polynom(); //polynom object to contain the polable as monom
 		pmon.add(new Monom(0,0));
 		
@@ -268,21 +271,22 @@ public class Polynom implements Polynom_able
 			else
 			{
 				pmon= new Polynom();
-				pmon.add((Monom) p1);	
+				pmon.add((Monom) p1);
+				return pmon.equals(this);
 			}
 		}
 		
 		
-		if(p1 instanceof Polynom || ( (pmon.isZero())==false ) )
+		if(p1 instanceof Polynom_able )//|| ( (pmon.isZero())==false ) )
 			
 		{
 			
-			Polynom ppoly;
+			Polynom ppoly = (Polynom) p1;
 			
-			if((pmon.isZero())==false) //if the polable is monom keep convert to poly
+		/*	if((pmon.isZero())==false) //if the polable is monom keep convert to poly
 				ppoly=(Polynom)pmon.copy();
 			else //the plable is monom
-				ppoly= (Polynom) p1;	
+				ppoly= (Polynom) p1;	*/
 					
 		
 		if(ppoly.isZero() && this.isZero())

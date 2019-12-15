@@ -8,7 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import Ex1.ComplexFunction;
 import Ex1.Monom;
+import Ex1.Operation;
 import Ex1.Polynom;
 import Ex1.Polynom_able;
 
@@ -95,9 +97,23 @@ public class MonomTest
 					
 					System.out.println(i+") "+m +"    \tisZero: "+m.isZero()+"\t f("+i+") = "+fx);
 					
+					Monom m1 = new Monom("6x^6");
+					ComplexFunction cf = new ComplexFunction(Operation.Plus,new Polynom("3x^6"),new Polynom("3x^6"));
+					assertTrue(m1.equals(cf));
+					Polynom p = new Polynom("3x^6+3x^6-1+1");
+
+					assertTrue(m1.equals(p));
+
+					assertTrue(m1.equals(new Polynom("+6x^6")));
+					
 				}
 		
 	
 	}
+			
+			
+			
+			
+
 }
 

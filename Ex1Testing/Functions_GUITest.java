@@ -40,7 +40,7 @@ class Functions_GUITest
 		public static void main(String[] a) throws IOException 
 		{
 			functions data = FunctionsFactory();
-			int w=1000, h=600, res=200;
+			int w=1000, h=600, res=600;
 			Range rx = new Range(-10,10);
 			Range ry = new Range(-5,15);
 			data.drawFunctions(w,h,rx,ry,res);
@@ -145,7 +145,7 @@ class Functions_GUITest
 	@Test
 	void testDrawFunctionsIntIntRangeRangeInt() 
 	{
-		int w=1000, h=600, res=200;
+		int w=1000, h=600, res=600;
 		Range rx = new Range(-10,10);
 		Range ry = new Range(-5,15);
 		_data.drawFunctions(w,h,rx,ry,res);
