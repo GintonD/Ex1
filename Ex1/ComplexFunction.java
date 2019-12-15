@@ -17,7 +17,7 @@ public class ComplexFunction implements complex_function
      */
 	public ComplexFunction(Operation o,function l,function r )
 	{
-	this.op=o; //maybe to add none condition
+	this.op=o; 
 	this.left=l.copy();
 	this.right=r.copy();
 	if(this.left != null && (!(this.right.toString().equals("0"))) && this.op == Operation.None)
@@ -32,7 +32,7 @@ public class ComplexFunction implements complex_function
      * Constructor from on side function.
      * @param f
      */
-	public ComplexFunction(function f) //need to fix the none
+	public ComplexFunction(function f) 
 	{
 		this.left=f.copy();
 		this.right=new Polynom("0.0");
@@ -50,7 +50,7 @@ public class ComplexFunction implements complex_function
 	 */
 	public ComplexFunction(String op, function l, function r) 
 	{
-		this.op=StringtoOp(op);    //maybe to add none condition
+		this.op=StringtoOp(op);    
 		this.left=l.copy();
 		this.right=r.copy();
 		if(this.left != null && (!(this.right.toString().equals("0"))) && this.op == Operation.None)
@@ -58,6 +58,8 @@ public class ComplexFunction implements complex_function
 		
 	}
 
+	
+	
 
 	/**
 	 * Constructor that got only string
@@ -110,6 +112,11 @@ public class ComplexFunction implements complex_function
 
 
 //*********** More Opreation*****************************
+	
+	/**
+	 * return the value of function in the current x.
+	 * 
+	 */
 	@Override
 	public double f(double x)
 	{
@@ -306,12 +313,6 @@ public class ComplexFunction implements complex_function
 		
 		
 		
-		
-		
-		
-	
-
-
 
 	@Override
 	/**

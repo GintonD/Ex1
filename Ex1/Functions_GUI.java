@@ -19,7 +19,8 @@ import com.google.gson.*;
 public class Functions_GUI implements functions 
 {
 	private ArrayList<function> FunctiosArray;
-	
+
+//*******************regular method of Arraylist implem collection.*****************
 	
 	/**
 	 * Init Consturctor
@@ -135,8 +136,13 @@ public class Functions_GUI implements functions
 			str =str+"f"+i+"="+ FunctiosArray.get(i) + ".\n";
 		return str;
 	}
+//***********************Non Trivial Functions***********************************	
 	
-
+	/**
+	 * Init a new collection of functions from a file
+	 * @param file - the file name
+	 * @throws IOException if the file does not exists of unreadable (wrong format)
+	 */
 	@Override
 	public void initFromFile(String file) throws IOException 
 	{
@@ -158,7 +164,14 @@ public class Functions_GUI implements functions
 		
 		
 	}
-
+	
+	
+	
+	/**
+	 * 
+	 * @param file - the file name
+	 * @throws IOException if the file is not writable
+	 */
 	@Override
 	public void saveToFile(String file) throws IOException 
 	{
@@ -181,6 +194,16 @@ public class Functions_GUI implements functions
 	}
 
 	
+	
+	/**
+	 * Draws all the functions in the collection in a GUI window using the
+	 * given parameters for the GUI windo and the range & resolution
+	 * @param width - the width of the window - in pixels
+	 * @param height - the height of the window - in pixels
+	 * @param rx - the range of the horizontal axis
+	 * @param ry - the range of the vertical axis
+	 * @param resolution - the number of samples with in rx: the X_step = rx/resulution
+	 */
 	@Override
 	public void drawFunctions(int width, int height, Range rx, Range ry, int resolution) 
 	{
@@ -232,6 +255,14 @@ public class Functions_GUI implements functions
 		
 	}
 
+	
+	
+	
+	/**
+	 * Draws all the functions in the collection in a GUI window using the given JSON file
+	 * @param json_file - the file with all the parameters for the GUI window. 
+	 *  
+	 */
 	@Override
 	public void drawFunctions(String json_file) 
 	{
