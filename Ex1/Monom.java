@@ -137,6 +137,7 @@ public class Monom implements function
 	 */
 	public Monom(String s)
 	{
+		s = s.replaceAll("\\s+","");
 		if((s.contains("("))  || (s.contains(")")) || (s.contains("*") ))
 			throw new IllegalArgumentException("The string is illigal : the string cant be from the format monom a*x^n. \n please remove the '*' or the '()'!!"); 
 		s=s.toLowerCase();

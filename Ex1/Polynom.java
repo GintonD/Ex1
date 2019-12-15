@@ -66,6 +66,7 @@ public class Polynom implements Polynom_able
 	{
 		pol  = new HashMap<Integer, Monom>() ;
 		Monom montemp = null;
+		s = s.replaceAll("\\s+","");
 		if((s.contains("("))  || (s.contains(")")) || (s.contains("*") || (s.contains(" ")))) 
 			throw new IllegalArgumentException("The string is illigal :\n"
 					+ " -the string cant be from the format (p1)*(p2)\n"

@@ -17,9 +17,13 @@ public class ComplexFunction implements complex_function
      */
 	public ComplexFunction(Operation o,function l,function r )
 	{
-	this.op=o;
+	this.op=o; //maybe to add none condition
 	this.left=l.copy();
-	this.right=r.copy();		
+	this.right=r.copy();
+	if(this.left != null && (!(this.right.toString().equals("0"))) && this.op == Operation.None)
+        throw new RuntimeException("Error:invaild operation!!\n this shape is not alowwed: None(0,b) , None(a,b)\nwhile b,a not equal 0");
+	
+		
 	}
     
 	
@@ -31,7 +35,7 @@ public class ComplexFunction implements complex_function
 	public ComplexFunction(function f) //need to fix the none
 	{
 		this.left=f.copy();
-		this.right= new Polynom("0.0");
+		this.right=new Polynom("0.0");
 		this.op= Operation.None;
 	}
 
@@ -46,9 +50,12 @@ public class ComplexFunction implements complex_function
 	 */
 	public ComplexFunction(String op, function l, function r) 
 	{
+		this.op=StringtoOp(op);    //maybe to add none condition
 		this.left=l.copy();
 		this.right=r.copy();
-		this.op=StringtoOp(op);
+		if(this.left != null && (!(this.right.toString().equals("0"))) && this.op == Operation.None)
+	        throw new RuntimeException("Eror:invaild operation!!\\n this shape is not alowwed: None(0,b) , None(a,b)\\nwhile b,a not equal 0");
+		
 	}
 
 
@@ -62,17 +69,6 @@ public class ComplexFunction implements complex_function
 		this.left=cf.left();
 		this.op=cf.getOp();
 		this.right=cf.right();
-	}
-
-
-	/**
-	 * Empty Cinstructor
-	 */
-	public ComplexFunction() //need to fix the none
-	{
-		this.left = new Polynom("0");
-		this.right = new Polynom("0");
-		this.op = Operation.None;
 	}
 
 
@@ -132,6 +128,8 @@ public class ComplexFunction implements complex_function
 			
 			
 		case Divid:
+			if(this.right.f(x)==0)
+				throw new ArithmeticException("Eror:Dont divide by 0 !!!");
 			return res+ this.left.f(x)/this.right.f(x);
 			
 			
@@ -148,11 +146,16 @@ public class ComplexFunction implements complex_function
 			
 			
 		case None:
-			break;
+			if(this.left != null && this.right.toString().equals("0")) //only from the shape None(a,0). and not from the shape None(a,b)
+				return res+ this.left.f(x);
+			else
+			throw new RuntimeException("Error:invalid Opreation!!");
 			
 			
 		case Error:
 			throw new RuntimeException("Error:invalid Opreation!!");
+			
+			
 		}
 		return res;
 	}
@@ -194,7 +197,6 @@ public class ComplexFunction implements complex_function
 	private function FromStringRecursion(String s)
 	{
 		String left;
-		int d=0;
 		String right;
 		int start;
 		int end;
@@ -204,13 +206,13 @@ public class ComplexFunction implements complex_function
 		Operation o = StringtoOp(operator);
 		
 		
-		end=MiddlePsik(s); //end=s.lastIndexOf(",");
-		
-		//if (s.charAt(end)=='^') d++;
-		left=s.substring(start+1, end+d); //maybe remove the -1
+		end=MiddlePsik(s); 
 		
 		
-		right=s.substring(end+1, s.length()-1); //maybe remove the -1
+		left=s.substring(start+1, end); 
+		
+		
+		right=s.substring(end+1, s.length()-1); 
 		
 		
 		return new ComplexFunction(o,initFromString(left),initFromString(right) );
@@ -331,7 +333,11 @@ public class ComplexFunction implements complex_function
 	 */
 	public String toString() 
 	{
-		String str= this.op + "("+ this.left.toString()+","+this.right.toString()+")";
+		String str;
+		if(!(this.op==Operation.None && this.right.toString().equals("0")))
+			str= this.op + "("+ this.left.toString()+","+this.right.toString()+")";
+		else
+			str=this.left.toString(); //None(a,0)= a
 		return str;
 		
 	}
@@ -351,7 +357,7 @@ public class ComplexFunction implements complex_function
 		else
 			fnc = (function)obj;
 		
-		for(int i=0;i<10000;i++)
+		for(int i=1;i<10000;i++)
 		{
 			if(this.f(i)!=fnc.f(i)) 
 				return false;
@@ -366,6 +372,7 @@ public class ComplexFunction implements complex_function
 	@Override
 	public void plus(function f1)
 	{
+		
 		this.left=this.copy();
 		this.right=f1;
 		this.op=Operation.Plus;
