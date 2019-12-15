@@ -7,12 +7,14 @@ General Explanation:
 This explanation is general and to understand the whole picture please read ALL the notes in the code! 
  
 We wrote 4 clasess :
+
 Monom,Polynom,ComplexFunction and Functions_GUI that together represent the A Graph that can show complicated functions. 
 
 The polynom contain by the HashMap data structure.
 the functions in the gui contain by ArrayList data structure.
 
 Monom class: 
+
 This class represents a simple "Monom" of shape a*x^b, where a is a real number and a is an integer (summed a none negative),  
  see: https://en.wikipedia.org/wiki/Monomial  
   The class implements function and support simple operations as: construction, value at x, derivative, add and multiply. Etc.. 
@@ -20,6 +22,7 @@ The  monom string should look like this -  >  “  +/- ax^b  “ .
 (These characters are invalid :”   ) , * ,  ( , “ 
  
 Polynom class: 
+
 This class represents a Polynom based on the monom class and contain whole polynom in the HashMap data structure. 
 The  polyom string should look like this   ->  “+/- a1x^b  +/- a2x^b “  - >  +10+3x^3-4x^4+5x^5 
 (with no backspace between the monoms and all highlights of the monom.) 
