@@ -1,4 +1,4 @@
-# Ex1
+# Ex1 -OOP
 
 
 Readme: 
@@ -10,7 +10,7 @@ This explanation is general and to understand the whole picture please read ALL 
  
 We wrote 4 clasess :
 
-Monom,Polynom,ComplexFunction and Functions_GUI.
+# Monom,Polynom,ComplexFunction and Functions_GUI.
 
 
 that together represent the A Graph that can show complicated functions. 
@@ -19,7 +19,7 @@ The polynom contain by the HashMap data structure.
 the functions in the gui contain by ArrayList data structure.
 
 
-Monom class: 
+# Monom class: 
 
 This class represents a simple "Monom" of shape a*x^b, where a is a real number and a is an integer (summed a none negative),  
  see: https://en.wikipedia.org/wiki/Monomial  
@@ -28,7 +28,7 @@ The  monom string should look like this -  >  “  +/- ax^b  “ .
 (These characters are invalid :”   ) , * ,  ( , “ 
 
  
-Polynom class: 
+# Polynom class: 
 
 This class represents a Polynom based on the monom class and contain whole polynom in the HashMap data structure. 
 The  polyom string should look like this   ->  “+/- a1x^b  +/- a2x^b “  - >  +10+3x^3-4x^4+5x^5 
@@ -37,7 +37,7 @@ The  polyom string should look like this   ->  “+/- a1x^b  +/- a2x^b “  - > 
 • add - there is two options to add function add Monom/Polynom(using Polynom_able) . • derivative • f(x) • multiply • subtract • root - Finds the point of intersection of the polynomial in the given range • area - Returns the value of the area in the given range • copy • is equal • is zero
 
 
-ComplexFunction class:
+# ComplexFunction class:
 
 This class represents a ComplexFunction based on the monom and polynom class.
 some of the arithmatic opreation that we can use between the functions:
@@ -47,6 +47,12 @@ Min: min(g,f)
 Plus: +
 Multiply: *
 Divide: \
+
+
+# Functions_GUI
+
+the class print graph of the mathmatical functions on the axiss board.
+
 
 Attention 1!!: there is fake Operation called None. the only way shuld he can use is by this shape: None(f,0) (f - current function)
 for example: None(2x^2+2,Times(3,2x)) will throw exception.
