@@ -6,7 +6,9 @@ Authors : dolev and ginton.
 General Explanation: 
 This explanation is general and to understand the whole picture please read ALL the notes in the code! 
  
-We wrote 4 clasess :  Monom,Polynom,ComplexFunction and Functions_GUI that together represent the A Graph that can show complicated functions. 
+We wrote 4 clasess :
+Monom,Polynom,ComplexFunction and Functions_GUI that together represent the A Graph that can show complicated functions. 
+
 The polynom contain by the HashMap data structure.
 the functions in the gui contain by ArrayList data structure.
 
